@@ -1,9 +1,12 @@
-name: Deploy to AWS S3 
+name: Deploy to AWS S3
 
 on:
   push:
     branches:
-      - main
+      - main  # Trigger deployment when pushing to main branch
+
+permissions:
+  contents: read
 
 jobs:
   deploy:
@@ -13,11 +16,11 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # 👉 If your project needs to be built (React, Hugo, etc.), uncomment below:
+      # 👉 Uncomment this if you have a build step (e.g. React, Vue, Hugo)
       # - name: Build project
       #   run: npm run build
 
-      - name: Upload files to S3
+      - name: Sync files to S3
         uses: jakejarvis/s3-sync-action@v0.5.1
         with:
           args: --delete
@@ -26,13 +29,13 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_REGION: ${{ secrets.AWS_REGION }}
-          SOURCE_DIR: ./  # or ./public, ./dist, etc.
+          SOURCE_DIR: ./  # Change to ./dist, ./build, or ./public if needed
 
       - name: Invalidate CloudFront cache
         uses: chetan/invalidate-cloudfront-action@v2
         env:
           DISTRIBUTION: ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }}
           PATHS: "/*"
-          AWS_REGION: us-east-1
+          AWS_REGION: ${{ secrets.AWS_REGION }}
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
