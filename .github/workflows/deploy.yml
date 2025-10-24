@@ -1,9 +1,9 @@
-name: Deploy to AWS S3 
+name: Upload Website
 
 on:
   push:
     branches:
-      - main
+    - Main
 
 jobs:
   deploy:
