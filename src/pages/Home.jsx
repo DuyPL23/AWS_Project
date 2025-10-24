@@ -9,7 +9,7 @@ export default function Home() {
     <main className="max-w-5xl mx-auto px-4 py-12">
       <section className="bg-white rounded-lg p-8 shadow-sm grid md:grid-cols-2 gap-8 items-center">
         <div>
-          <h1 className="text-3xl md:text-4xl font-extrabold text-green-700 leading-tight">Chào mừng đến với English Journey — Học từ tiếng Anh dễ dàng!</h1>
+          <h1 className="text-3xl md:text-4xl font-extrabold text-green-700 leading-tight">Chào mừng đến với English Journey 2 — Học từ tiếng Anh dễ dàng!</h1>
           <p className="mt-4 text-gray-700">Luyện từ vựng theo chủ đề, theo dõi tiến độ và kiểm tra kiến thức mỗi ngày.</p>
 
           <div className="mt-6">
