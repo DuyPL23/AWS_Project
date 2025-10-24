@@ -3,7 +3,7 @@ name: Deploy to AWS S3
 on:
   push:
     branches:
-      - main  # Trigger deployment when pushing to main branch
+      - main  # Deploy when pushing to main branch
 
 permissions:
   contents: read
@@ -16,7 +16,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # 👉 Uncomment this if you have a build step (e.g. React, Vue, Hugo)
+      # 👉 If you build your site first (React/Vue/etc), uncomment:
       # - name: Build project
       #   run: npm run build
 
@@ -29,9 +29,10 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_REGION: ${{ secrets.AWS_REGION }}
-          SOURCE_DIR: ./  # or ./dist, ./build, etc.
+          SOURCE_DIR: ./  # or ./dist, ./build, ./public
 
       - name: Invalidate CloudFront cache
+        if: ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID != '' }}
         uses: chetan/invalidate-cloudfront-action@v2
         env:
           DISTRIBUTION: ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }}
