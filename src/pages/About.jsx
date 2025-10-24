@@ -4,7 +4,7 @@ export default function About() {
       <section className="bg-gradient-to-r from-green-50 to-white rounded-xl p-8 shadow-md grid md:grid-cols-2 gap-6 items-center">
         <div>
           <h1 className="text-3xl font-extrabold text-green-700">Chào mừng đến với English Journey</h1>
-          <p className="mt-4 text-gray-700">Chào bạn! 👋<br/>Chào mừng đến với English Journey 2 – người bạn đồng hành giúp bạn chinh phục tiếng Anh mỗi ngày.</p>
+          <p className="mt-4 text-gray-700">Chào bạn! 👋<br/>Chào mừng đến với English Journey – người bạn đồng hành giúp bạn chinh phục tiếng Anh mỗi ngày.</p>
 
           <p className="mt-4 text-gray-700">Chúng tôi hiểu rằng việc học tiếng Anh đôi khi có thể khiến bạn thấy khó khăn, chán nản hoặc không biết bắt đầu từ đâu. Vì thế,   được tạo ra để biến việc học trở nên nhẹ nhàng, vui vẻ và hiệu quả hơn bao giờ hết.</p>
 
